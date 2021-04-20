@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.7.1
+Created-By: 16.0-b13 (Sun Microsystems Inc.)
+MIDlet-1: Pipy vs Boba GiaiTri321,/icon.png,midlet
+MIDlet-Vendor: DaSuppaStudios Ltd.
+Nokia-Scalable-Icon-MIDlet-1: /icon.svg
+UseNativeTextButtons: false
+Nokia-MIDlet-On-Screen-Keypad: no
+MIDlet-Name: Pipy vs Boba GiaiTri321
+MIDlet-Version: 2.1.97
+MicroEdition-Configuration: CLDC-1.1
+MicroEdition-Profile: MIDP-2.0
+MIDlet-Delete-Confirm: Moi ban den voi the gioi games giaitri321.wap.sh!

@@ -1,0 +1,116 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: GroundAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: d6e4aafc74d804a45982ae82488385fd, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 116947273475212686, guid: d6e4aafc74d804a45982ae82488385fd, type: 3}
+  - {fileID: 137937702681042353, guid: d6e4aafc74d804a45982ae82488385fd, type: 3}
+  - {fileID: -6111218970273361148, guid: d6e4aafc74d804a45982ae82488385fd, type: 3}
+  - {fileID: 2566602637218860330, guid: d6e4aafc74d804a45982ae82488385fd, type: 3}
+  - {fileID: -7331318893563052070, guid: d6e4aafc74d804a45982ae82488385fd, type: 3}
+  - {fileID: -573489194015033818, guid: d6e4aafc74d804a45982ae82488385fd, type: 3}
+  - {fileID: -8085759215221438480, guid: d6e4aafc74d804a45982ae82488385fd, type: 3}
+  - {fileID: 8075071216703869841, guid: d6e4aafc74d804a45982ae82488385fd, type: 3}
+  - {fileID: 8233647756539614265, guid: d6e4aafc74d804a45982ae82488385fd, type: 3}
+  - {fileID: -8318210698828428084, guid: d6e4aafc74d804a45982ae82488385fd, type: 3}
+  - {fileID: 6989508670182149607, guid: d6e4aafc74d804a45982ae82488385fd, type: 3}
+  - {fileID: -4020591431259407588, guid: d6e4aafc74d804a45982ae82488385fd, type: 3}
+  - {fileID: -8224663237989137108, guid: d6e4aafc74d804a45982ae82488385fd, type: 3}
+  - {fileID: 7284179432452570939, guid: d6e4aafc74d804a45982ae82488385fd, type: 3}
+  - {fileID: 3286254520053553608, guid: d6e4aafc74d804a45982ae82488385fd, type: 3}
+  - {fileID: 7133483931668775307, guid: d6e4aafc74d804a45982ae82488385fd, type: 3}
+  - {fileID: -5471358006952818811, guid: d6e4aafc74d804a45982ae82488385fd, type: 3}
+  - {fileID: 3460886492167564586, guid: d6e4aafc74d804a45982ae82488385fd, type: 3}
+  - {fileID: -7671942338881777368, guid: d6e4aafc74d804a45982ae82488385fd, type: 3}
+  - {fileID: 2614070038614360367, guid: d6e4aafc74d804a45982ae82488385fd, type: 3}
+  - {fileID: -6990906094821802048, guid: d6e4aafc74d804a45982ae82488385fd, type: 3}
+  - {fileID: 1635330669724964187, guid: d6e4aafc74d804a45982ae82488385fd, type: 3}
+  - {fileID: 944086929164019348, guid: d6e4aafc74d804a45982ae82488385fd, type: 3}
+  - {fileID: -3947371807034408316, guid: d6e4aafc74d804a45982ae82488385fd, type: 3}
+  - {fileID: -6131211241487566245, guid: d6e4aafc74d804a45982ae82488385fd, type: 3}
+  - {fileID: 4280743881737284724, guid: d6e4aafc74d804a45982ae82488385fd, type: 3}
+  - {fileID: 6342121494240928659, guid: d6e4aafc74d804a45982ae82488385fd, type: 3}
+  - {fileID: -4135516492565690961, guid: d6e4aafc74d804a45982ae82488385fd, type: 3}
+  - {fileID: 6605619837150806501, guid: d6e4aafc74d804a45982ae82488385fd, type: 3}
+  - {fileID: 8425877139274491456, guid: d6e4aafc74d804a45982ae82488385fd, type: 3}
+  - {fileID: -465676423210221490, guid: d6e4aafc74d804a45982ae82488385fd, type: 3}
+  - {fileID: -7168221331620731325, guid: d6e4aafc74d804a45982ae82488385fd, type: 3}
+  - {fileID: -1169610344459500410, guid: d6e4aafc74d804a45982ae82488385fd, type: 3}
+  - {fileID: 5781634956409597844, guid: d6e4aafc74d804a45982ae82488385fd, type: 3}
+  - {fileID: 656345900898628280, guid: d6e4aafc74d804a45982ae82488385fd, type: 3}
+  - {fileID: 4366431566237768977, guid: d6e4aafc74d804a45982ae82488385fd, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - ground_grass_0
+  - ground_grass_1
+  - ground_grass_2
+  - ground_grass_3
+  - ground_grass_4
+  - ground_grass_5
+  - ground_grass_6
+  - ground_grass_7
+  - ground_grass_8
+  - ground_grass_9
+  - ground_grass_13
+  - ground_grass_12
+  - ground_grass_11
+  - ground_grass_10
+  - ground_grass_26
+  - ground_grass_17
+  - ground_grass_27
+  - ground_grass_16
+  - ground_grass_24
+  - ground_grass_15
+  - ground_grass_25
+  - ground_grass_14
+  - ground_grass_22
+  - ground_grass_23
+  - ground_grass_20
+  - ground_grass_19
+  - ground_grass_21
+  - ground_grass_18
+  - ground_grass_31
+  - ground_grass_30
+  - ground_grass_33
+  - ground_grass_28
+  - ground_grass_32
+  - ground_grass_29
+  - ground_grass_35
+  - ground_grass_34
+  m_RenderDataMap: {}
+  m_Tag: GroundAtlas
+  m_IsVariant: 0
