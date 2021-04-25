@@ -4,14 +4,7 @@ using UnityEngine;
 
 public class ResetView : MonoBehaviour
 {
-    [SerializeField] private GameObject[] map;
-    void Start()
-    {
-        for (int i = 0; i < map.Length; i++)
-        {
-            map[i].SetActive(false);
-        }
-    }
+
 
     void Update()
     {
