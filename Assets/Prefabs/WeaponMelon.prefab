@@ -74,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 3872468970474584729, guid: c9df202f4dc5a4a41b29bc1634f50eb1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -99,8 +99,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dame: 0
-  dameZone: 0
+  dmgZone: 0
   throwDistance: 0
+  anim: {fileID: 0}
+  colli: {fileID: 0}
   melon: {fileID: 7400000, guid: a34817a3d060dbd45a5e7dc6d7376fa3, type: 2}
 --- !u!95 &-7619308578949012971
 Animator:

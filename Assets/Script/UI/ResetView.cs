@@ -25,11 +25,11 @@ public class ResetView : MonoBehaviour
     {
         if (other.CompareTag("Clouds"))
         {
-            other.transform.position = new Vector3(11f, Random.Range(15f, 20f), 0f);
+            other.transform.position = new Vector3(35f, Random.Range(15f, 20f), 0f);
         }
         if (other.CompareTag("Hills"))
         {
-            other.transform.position = new Vector3(13f, other.transform.position.y, 0f);
+            other.transform.position = new Vector3(40f, other.transform.position.y, 0f);
         }
     }
 }

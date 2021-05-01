@@ -9,7 +9,7 @@ public class PlayerController : NetworkBehaviour
 {
     // Move player
     [SerializeField] private float moveSpeed;
-    [SerializeField] private Rigidbody2D rb;
+    private Rigidbody2D rb;
     private Vector2 lastMove;
     private bool wasMovingVertical;
     private float horizontal;
@@ -39,6 +39,7 @@ public class PlayerController : NetworkBehaviour
     {
 
         iD = NetworkObjectId;
+        rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         anim.Play(idle.name);
         ChooseTeamPod();

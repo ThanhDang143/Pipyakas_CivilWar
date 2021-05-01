@@ -5,14 +5,14 @@ using DG.Tweening;
 
 public class Weapons : MonoBehaviour
 {
-    public int dame;
-    public float dameZone, throwDistance;
-    private Animator anim;
-    [SerializeField] private AnimationClip melon;
+    public int dmg;
+    public float dmgZone, throwDistance;
+    public Animator anim;
+    public Collider2D colli;
 
-    public void Start() {
+    public virtual void Start()
+    {
         anim = GetComponent<Animator>();
-        anim.Play(melon.name);
         StartCoroutine(IEBoom());
     }
 
