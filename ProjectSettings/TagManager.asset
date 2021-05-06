@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Clouds
   - Hills
+  - TeamPod
   layers:
   - Default
   - TransparentFX

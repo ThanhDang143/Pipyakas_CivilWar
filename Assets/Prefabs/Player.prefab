@@ -236,7 +236,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 5
   m_Sprite: {fileID: -1825104375692650988, guid: 9e6faa4423ac40942885ddd8f62d0ac3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -267,7 +267,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!58 &5988811525443448370
 CircleCollider2D:
@@ -297,8 +297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eece75934dcd2bb4580aed06d66d70fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 200
-  rb: {fileID: 5988811525443448333}
+  moveSpeed: 150
   idle: {fileID: 7400000, guid: 35a9088c24d801b4ab05c79fb1095330, type: 2}
   idleBack: {fileID: 7400000, guid: 9eb2e4f590a3fa142b80a6ee0db3f8f5, type: 2}
   idleLeft: {fileID: 7400000, guid: cb8af9f6f0124bd43b7f83786aa8b2fd, type: 2}
