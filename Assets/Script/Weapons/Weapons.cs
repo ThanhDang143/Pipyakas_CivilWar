@@ -13,6 +13,8 @@ public class Weapons : MonoBehaviour
     public virtual void Start()
     {
         anim = GetComponent<Animator>();
+        colli = GetComponent<Collider2D>();
+        colli.isTrigger = true;
         StartCoroutine(IEBoom());
     }
 

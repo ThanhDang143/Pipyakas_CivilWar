@@ -4,10 +4,11 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using DG.Tweening;
 using MLAPI;
+using UnityEditor;
 
 public class PlayerController : NetworkBehaviour
 {
-    // Move player
+    [Header("Movement")]
     [SerializeField] private float moveSpeed;
     private Rigidbody2D rb;
     private Vector2 lastMove;
@@ -20,38 +21,51 @@ public class PlayerController : NetworkBehaviour
     private bool isRight;
     private bool isBack;
     private bool isFront;
+
+    [Header("Animation")]
+    // [SerializeField] private AnimationClip idle;
+    // [SerializeField] private AnimationClip idleBack;
+    // [SerializeField] private AnimationClip idleLeft;
+    // [SerializeField] private AnimationClip idleRight;
+    // [SerializeField] private AnimationClip moveRight;
+    // [SerializeField] private AnimationClip moveLeft;
+    // [SerializeField] private AnimationClip moveFront;
+    // [SerializeField] private AnimationClip moveBack;
+
+    [SerializeField] private AnimationClip[] idle; //Front //Back //Left //Right
+    [SerializeField] private AnimationClip[] move; //Front //Back //Left //Right
     private Animator anim;
-    [SerializeField] private AnimationClip idle;
-    [SerializeField] private AnimationClip idleBack;
-    [SerializeField] private AnimationClip idleLeft;
-    [SerializeField] private AnimationClip idleRight;
-    [SerializeField] private AnimationClip moveRight;
-    [SerializeField] private AnimationClip moveLeft;
-    [SerializeField] private AnimationClip moveFront;
-    [SerializeField] private AnimationClip moveBack;
+
+    [Header("Identifier")]
+    [SerializeField] ulong iD;
     [SerializeField] private GameObject teamPod;
     [SerializeField] private Sprite[] teamPodSprite;
-    [SerializeField] ulong iD;
-    [SerializeField] GameObject weapon;
+
+    [Header("Weapons & Overlap Detection")]
+    [SerializeField] private GameObject weapon;
+    [SerializeField] private float teamRadius;
+    [SerializeField] private LayerMask overlapMask;
+    private bool isOverlap;
+
 
 
     void Start()
     {
-
         iD = NetworkObjectId;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        anim.Play(idle.name);
+        anim.Play(idle[0].name);
         ChooseTeamPod();
         isLeft = false;
         isRight = false;
         isBack = false;
         isFront = true;
-
     }
 
     void Update()
     {
+        isOverlap = Physics2D.OverlapCircle(transform.position, teamRadius, overlapMask);
+        Debug.Log(isOverlap);
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
         if (IsLocalPlayer)
@@ -63,7 +77,7 @@ public class PlayerController : NetworkBehaviour
 
     private void Attack()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && !isOverlap)
         {
             GameObject w = Instantiate(weapon, transform.position, Quaternion.identity);
         }
@@ -71,16 +85,14 @@ public class PlayerController : NetworkBehaviour
 
     private void ChooseTeamPod()
     {
-        GameObject tP = Instantiate(teamPod, transform);
-        tP.transform.position = transform.position + new Vector3(0f, -0.2f, 0f);
-        tP.GetComponent<SpriteRenderer>().sprite = teamPodSprite[iD - 1];
+        teamPod.GetComponent<SpriteRenderer>().sprite = teamPodSprite[iD - 1];
     }
 
     private void SetAnimHorizontal()
     {
         if (horizontal > 0)
         {
-            anim.Play(moveRight.name);
+            anim.Play(move[3].name);
             if (!isRight)
             {
                 isLeft = false;
@@ -91,7 +103,7 @@ public class PlayerController : NetworkBehaviour
         }
         else if (horizontal < 0)
         {
-            anim.Play(moveLeft.name);
+            anim.Play(move[2].name);
             if (!isLeft)
             {
                 isLeft = true;
@@ -106,7 +118,7 @@ public class PlayerController : NetworkBehaviour
     {
         if (vertical > 0)
         {
-            anim.Play(moveBack.name);
+            anim.Play(move[1].name);
             if (!isBack)
             {
                 isLeft = false;
@@ -117,7 +129,7 @@ public class PlayerController : NetworkBehaviour
         }
         else if (vertical < 0)
         {
-            anim.Play(moveFront.name);
+            anim.Play(move[0].name);
             if (!isFront)
             {
                 isLeft = false;
@@ -132,19 +144,19 @@ public class PlayerController : NetworkBehaviour
     {
         if (isBack)
         {
-            anim.Play(idleBack.name);
+            anim.Play(idle[1].name);
         }
         else if (isFront)
         {
-            anim.Play(idle.name);
+            anim.Play(idle[0].name);
         }
         else if (isLeft)
         {
-            anim.Play(idleLeft.name);
+            anim.Play(idle[2].name);
         }
         else if (isRight)
         {
-            anim.Play(idleRight.name);
+            anim.Play(idle[3].name);
         }
     }
 

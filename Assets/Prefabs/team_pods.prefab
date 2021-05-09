@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6102501953090892164}
   - component: {fileID: 2082639423659770621}
-  - component: {fileID: 6068065946073139330}
-  m_Layer: 0
+  - component: {fileID: 6556499991761689797}
+  m_Layer: 7
   m_Name: team_pods
   m_TagString: TeamPod
   m_Icon: {fileID: 0}
@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2153938907976792814}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -84,7 +84,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!70 &6068065946073139330
+--- !u!70 &6556499991761689797
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -97,6 +97,6 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0000000015441941, y: 0.012953641}
-  m_Size: {x: 1.2100003, y: 0.75000143}
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1.2000002, y: 0.75}
   m_Direction: 1

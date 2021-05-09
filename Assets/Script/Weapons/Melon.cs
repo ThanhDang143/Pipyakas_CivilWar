@@ -8,8 +8,6 @@ public class Melon : Weapons
     public override void Start()
     {
         base.Start();
-        colli = GetComponent<CircleCollider2D>();
-        colli.enabled = false;
         anim.Play(melon.name);
     }
 
