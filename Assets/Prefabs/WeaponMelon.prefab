@@ -103,6 +103,10 @@ MonoBehaviour:
   throwDistance: 0
   anim: {fileID: 0}
   colli: {fileID: 0}
+  overlapRadius: 0.285
+  overlapMask:
+    serializedVersion: 2
+    m_Bits: 128
   melon: {fileID: 7400000, guid: a34817a3d060dbd45a5e7dc6d7376fa3, type: 2}
 --- !u!95 &-7619308578949012971
 Animator:
