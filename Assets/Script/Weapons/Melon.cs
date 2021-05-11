@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Melon : Weapons
 {
-    [SerializeField] private AnimationClip melon;
+    [SerializeField] private AnimationClip animationClip;
     public override void Start()
     {
         base.Start();
-        anim.Play(melon.name);
+        anim.Play(animationClip.name);
     }
 
-    
+
 }

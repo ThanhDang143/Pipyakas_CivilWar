@@ -18,19 +18,18 @@ public class Weapons : MonoBehaviour
         anim = GetComponent<Animator>();
         colli = GetComponent<Collider2D>();
         colli.enabled = false;
-        StartCoroutine(IEBoom());
+        // StartCoroutine(IEBoom());
     }
 
     public void Update()
     {
         if (colli.enabled == false)
         {
-            isOverlap = Physics2D.OverlapCircle(transform.position, overlapRadius, overlapMask);
-            if (!isOverlap)
-            {
-                colli.enabled = true;
-                Debug.Log("Circle Collider enabled!!");
-            }
+            // isOverlap = Physics2D.OverlapCircle(transform.position, overlapRadius, overlapMask);
+            // if (!isOverlap)
+            // {
+            //     colli.enabled = true;
+            // }
         }
     }
 

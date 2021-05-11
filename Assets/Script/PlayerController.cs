@@ -43,6 +43,7 @@ public class PlayerController : NetworkBehaviour
     void Start()
     {
         iD = NetworkObjectId;
+        overlapRadius = 0.38f;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         anim.Play(idle[0].name);
@@ -55,6 +56,7 @@ public class PlayerController : NetworkBehaviour
 
     void Update()
     {
+        Debug.Log(isOverlap);
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
         if (IsLocalPlayer)
