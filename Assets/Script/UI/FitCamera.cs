@@ -13,6 +13,5 @@ public class FitCamera : MonoBehaviour
         float targetRatio = bG.bounds.size.x / bG.bounds.size.y;
         float differenceInSize = targetRatio / screenRatio;
         Camera.main.orthographicSize = bG.bounds.size.y / 2 * differenceInSize;
-        Debug.Log("Camera" + Camera.main.orthographicSize);
     }
 }

@@ -10,6 +10,4 @@ public class Melon : Weapons
         base.Start();
         anim.Play(animationClip.name);
     }
-
-
 }

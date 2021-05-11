@@ -36,14 +36,13 @@ public class PlayerController : NetworkBehaviour
     [SerializeField] private GameObject weapon;
     [SerializeField] private float overlapRadius;
     [SerializeField] private LayerMask overlapMask;
-    private bool isOverlap;
+    private bool isOverlapWaepons;
 
 
 
     void Start()
     {
         iD = NetworkObjectId;
-        overlapRadius = 0.38f;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         anim.Play(idle[0].name);
@@ -56,7 +55,7 @@ public class PlayerController : NetworkBehaviour
 
     void Update()
     {
-        Debug.Log(isOverlap);
+        Debug.Log("isOverlapWaepons-" + isOverlapWaepons);
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
         if (IsLocalPlayer)
@@ -68,8 +67,8 @@ public class PlayerController : NetworkBehaviour
 
     private void Attack()
     {
-        isOverlap = Physics2D.OverlapCircle(transform.position, overlapRadius, overlapMask);
-        if (Input.GetKeyDown(KeyCode.Space) && !isOverlap)
+        isOverlapWaepons = Physics2D.OverlapCircle(transform.position, overlapRadius, overlapMask);
+        if (Input.GetKeyDown(KeyCode.Space) && !isOverlapWaepons)
         {
             GameObject w = Instantiate(weapon, transform.position, Quaternion.identity);
         }

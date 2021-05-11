@@ -9,27 +9,28 @@ public class Weapons : MonoBehaviour
     public float dmgZone, throwDistance;
     public Animator anim;
     public Collider2D colli;
-    [HideInInspector] public bool isOverlap;
+    [HideInInspector] public bool isOverlapPlayer;
     public float overlapRadius;
     public LayerMask overlapMask;
 
     public virtual void Start()
     {
         anim = GetComponent<Animator>();
-        colli = GetComponent<Collider2D>();
+        colli = GetComponent<Collider2D>();   
         colli.enabled = false;
         // StartCoroutine(IEBoom());
     }
 
     public void Update()
     {
+        Debug.Log("isOverlapPlayer-" + isOverlapPlayer);
         if (colli.enabled == false)
         {
-            // isOverlap = Physics2D.OverlapCircle(transform.position, overlapRadius, overlapMask);
-            // if (!isOverlap)
-            // {
-            //     colli.enabled = true;
-            // }
+            isOverlapPlayer = Physics2D.OverlapCircle(transform.position, overlapRadius, overlapMask);
+            if (!isOverlapPlayer)
+            {
+                colli.enabled = true;
+            }
         }
     }
 
