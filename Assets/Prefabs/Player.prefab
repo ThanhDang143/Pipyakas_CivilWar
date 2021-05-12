@@ -324,7 +324,7 @@ MonoBehaviour:
   - {fileID: 5867991751792228967, guid: 60ee621a26cedec499309a2912d135a6, type: 3}
   - {fileID: -5805795239751194171, guid: 60ee621a26cedec499309a2912d135a6, type: 3}
   weapon: {fileID: 7916488479444942869, guid: bc34642b5c734bc4cb3258e58402f5cd, type: 3}
-  overlapRadius: 0.375
+  overlapRadius: 0.55
   overlapMask:
     serializedVersion: 2
     m_Bits: 256
@@ -434,6 +434,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5988811525443448371}
     m_Modifications:
+    - target: {fileID: 2082639423659770621, guid: 9c7243ff814750d45bf085b20b9ae1dd, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2082639423659770621, guid: 9c7243ff814750d45bf085b20b9ae1dd, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2082639423659770621, guid: 9c7243ff814750d45bf085b20b9ae1dd, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2153938907976792814, guid: 9c7243ff814750d45bf085b20b9ae1dd, type: 3}
       propertyPath: m_Name
       value: team_pods

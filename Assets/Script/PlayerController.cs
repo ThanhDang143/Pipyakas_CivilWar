@@ -55,7 +55,6 @@ public class PlayerController : NetworkBehaviour
 
     void Update()
     {
-        Debug.Log("isOverlapWaepons-" + isOverlapWaepons);
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
         if (IsLocalPlayer)
@@ -71,6 +70,8 @@ public class PlayerController : NetworkBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && !isOverlapWaepons)
         {
             GameObject w = Instantiate(weapon, transform.position, Quaternion.identity);
+            Physics2D.IgnoreCollision(w.GetComponent<Collider2D>(), GetComponent<Collider2D>(), true);
+            Physics2D.IgnoreCollision(w.GetComponent<Collider2D>(), teamPod.GetComponent<Collider2D>(), true);
         }
     }
 

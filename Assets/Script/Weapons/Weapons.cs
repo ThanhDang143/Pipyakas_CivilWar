@@ -8,7 +8,6 @@ public class Weapons : MonoBehaviour
     public int dmg;
     public float dmgZone, throwDistance;
     public Animator anim;
-    public Collider2D colli;
     [HideInInspector] public bool isOverlapPlayer;
     public float overlapRadius;
     public LayerMask overlapMask;
@@ -16,27 +15,29 @@ public class Weapons : MonoBehaviour
     public virtual void Start()
     {
         anim = GetComponent<Animator>();
-        colli = GetComponent<Collider2D>();   
-        colli.enabled = false;
-        // StartCoroutine(IEBoom());
+        StartCoroutine(IEBoom());
     }
 
     public void Update()
     {
-        Debug.Log("isOverlapPlayer-" + isOverlapPlayer);
-        if (colli.enabled == false)
+        isOverlapPlayer = Physics2D.OverlapCircle(transform.position, overlapRadius, overlapMask);
+        if (!isOverlapPlayer)
         {
-            isOverlapPlayer = Physics2D.OverlapCircle(transform.position, overlapRadius, overlapMask);
-            if (!isOverlapPlayer)
+            foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
             {
-                colli.enabled = true;
+                Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), GetComponent<Collider2D>(), false);
             }
+            foreach (GameObject teamPod in GameObject.FindGameObjectsWithTag("TeamPod"))
+            {
+                Physics2D.IgnoreCollision(teamPod.GetComponent<Collider2D>(), GetComponent<Collider2D>(), false);
+            }
+
         }
     }
 
     public IEnumerator IEBoom()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2.5f);
         Destroy(gameObject);
     }
 }
