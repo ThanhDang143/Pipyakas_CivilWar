@@ -64,14 +64,45 @@ public class PlayerController : NetworkBehaviour
         }
     }
 
+    // Player dính vụ nổ
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log(other);
+    }
+
     private void Attack()
     {
         isOverlapWaepons = Physics2D.OverlapCircle(transform.position, overlapRadius, overlapMask);
         if (Input.GetKeyDown(KeyCode.Space) && !isOverlapWaepons)
         {
             GameObject w = Instantiate(weapon, transform.position, Quaternion.identity);
+            ThrowWeapons(w);
             Physics2D.IgnoreCollision(w.GetComponent<Collider2D>(), GetComponent<Collider2D>(), true);
             Physics2D.IgnoreCollision(w.GetComponent<Collider2D>(), teamPod.GetComponent<Collider2D>(), true);
+        }
+    }
+
+    private void ThrowWeapons(GameObject weapon)
+    {
+        if (isLeft)
+        {
+            weapon.GetComponent<Rigidbody2D>().AddForce(new Vector2(-weapon.GetComponent<Melon>().throwPower, 0));
+            return;
+        }
+        if (isRight)
+        {
+            weapon.GetComponent<Rigidbody2D>().AddForce(new Vector2(weapon.GetComponent<Melon>().throwPower, 0));
+            return;
+        }
+        if (isFront)
+        {
+            weapon.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -weapon.GetComponent<Melon>().throwPower));
+            return;
+        }
+        if (isBack)
+        {
+            weapon.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, weapon.GetComponent<Melon>().throwPower));
+            return;
         }
     }
 

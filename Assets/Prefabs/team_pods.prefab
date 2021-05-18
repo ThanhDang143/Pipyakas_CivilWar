@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6102501953090892164}
   - component: {fileID: 2082639423659770621}
   - component: {fileID: 6556499991761689797}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: team_pods
   m_TagString: TeamPod
   m_Icon: {fileID: 0}
