@@ -29,11 +29,6 @@ public class Weapons : MonoBehaviour
             {
                 Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), GetComponent<Collider2D>(), false);
             }
-            foreach (GameObject teamPod in GameObject.FindGameObjectsWithTag("TeamPod"))
-            {
-                Physics2D.IgnoreCollision(teamPod.GetComponent<Collider2D>(), GetComponent<Collider2D>(), false);
-            }
-
         }
     }
 
@@ -41,7 +36,6 @@ public class Weapons : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         explosion.Play();
-        StartCoroutine(ShakeCamera.ins.IEShake(2.5f, 0.1f));
         GetComponent<SpriteRenderer>().enabled = false;
         colli.isTrigger = true;
         float stepTime = explosion.main.duration / 18;
@@ -51,22 +45,13 @@ public class Weapons : MonoBehaviour
         {
             Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), GetComponent<Collider2D>(), false);
         }
-        foreach (GameObject teamPod in GameObject.FindGameObjectsWithTag("TeamPod"))
-        {
-            Physics2D.IgnoreCollision(teamPod.GetComponent<Collider2D>(), GetComponent<Collider2D>(), false);
-        }
         // Scale Up dmgZone;
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < 5; i++)
         {
-            colli.radius += disDmgZone / 6;
+            colli.radius += disDmgZone / 5;
             yield return new WaitForSeconds(stepTime);
         }
-        //Scale Down dmgZone
-        for (int i = 0; i < 12; i++)
-        {
-            colli.radius -= disDmgZone / 12;
-            yield return new WaitForSeconds(stepTime);
-        }
+        yield return new WaitForSeconds(13 * stepTime);
         Destroy(gameObject);
     }
 }
