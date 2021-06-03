@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using MLAPI;
 using MLAPI.NetworkVariable;
 using MLAPI.Messaging;
-
+    
 public class HealthBar : NetworkBehaviour
 {
     public Slider healthSlider;

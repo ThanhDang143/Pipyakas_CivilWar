@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Melon : Weapons
+public class ThrowMelon : Weapons
 {
     public override void Start()
     {

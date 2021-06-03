@@ -13,6 +13,10 @@ public class Weapons : MonoBehaviour
     public float overlapRadius;
     public LayerMask overlapMask;
     public ParticleSystem explosion;
+    public AnimationClip animationClip;
+    public float lifeTime;
+    public GameObject crater;
+    public Sprite[] spriteCrater;
 
     public virtual void Start()
     {
@@ -32,9 +36,27 @@ public class Weapons : MonoBehaviour
         }
     }
 
+    public void SpawnCrater()
+    {
+        if (crater != null)
+        {
+            GameObject c = Instantiate(crater, transform.position, Quaternion.identity);
+            c.GetComponent<SpriteRenderer>().sprite = spriteCrater[Random.Range(0, spriteCrater.Length)];
+            // yield return new WaitForSeconds(5f);
+            c.GetComponent<SpriteRenderer>().DOFade(1f, lifeTime).OnComplete(() =>
+              {
+                  c.GetComponent<SpriteRenderer>().DOFade(0f, 1f).OnComplete(() =>
+                 {
+                     Destroy(c);
+                 });
+              });
+        }
+    }
+
     public IEnumerator IEBoom()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(lifeTime);
+        SpawnCrater();
         explosion.Play();
         GetComponent<SpriteRenderer>().enabled = false;
         colli.isTrigger = true;

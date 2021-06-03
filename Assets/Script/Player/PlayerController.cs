@@ -14,8 +14,10 @@ public class PlayerController : NetworkBehaviour
     [Header("Player Info")]
     [SerializeField] private NetworkVariableInt maxHealth = new NetworkVariableInt(new NetworkVariableSettings { WritePermission = NetworkVariablePermission.OwnerOnly });
     [SerializeField] private NetworkVariableInt currentHealth = new NetworkVariableInt(new NetworkVariableSettings { WritePermission = NetworkVariablePermission.OwnerOnly });
-    [SerializeField] private float moveSpeed;
     [SerializeField] private HealthBar healthBar;
+    [SerializeField] private float moveSpeed;
+    [SerializeField] public bool isStun;
+    [SerializeField] private float stunTime;
     [SerializeField] private GameObject vCam;
     private Rigidbody2D rb;
     private Vector2 lastMove;
@@ -40,13 +42,15 @@ public class PlayerController : NetworkBehaviour
     [SerializeField] private Sprite[] teamPodSprite;
 
     [Header("Weapons & Overlap Detection")]
-    [SerializeField] private GameObject weapon;
+    [SerializeField] private GameObject[] weapons;
     [SerializeField] private float overlapRadius;
     [SerializeField] private LayerMask overlapMask;
+    [SerializeField] private NetworkVariableInt chosenWeapon = new NetworkVariableInt(new NetworkVariableSettings { WritePermission = NetworkVariablePermission.OwnerOnly }, 0);
     private bool isOverlapWaepons;
 
     void Start()
     {
+
         //Setup
         iD = NetworkObjectId;
         rb = GetComponent<Rigidbody2D>();
@@ -55,6 +59,8 @@ public class PlayerController : NetworkBehaviour
         {
             vCam.gameObject.SetActive(false);
         }
+        isStun = false;
+        stunTime = 2f;
         ChooseTeamPod();
         //Setup for health
         maxHealth.Value = 100;
@@ -72,14 +78,54 @@ public class PlayerController : NetworkBehaviour
     {
         if (!IsLocalPlayer) return;
 
+        if (isStun)
+        {
+            stunTime -= Time.deltaTime;
+            if (stunTime <= 0)
+            {
+                isStun = false;
+                stunTime = 2f;
+                return;
+            }
+        }
+
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
         Move();
 
+        ChoseWeaponServerRpc();
+
         isOverlapWaepons = Physics2D.OverlapCircle(transform.position, overlapRadius, overlapMask);
-        if (Input.GetKeyDown(KeyCode.Space) && !isOverlapWaepons)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             AttackServerRpc();
+        }
+    }
+
+    [ServerRpc]
+    public void ChoseWeaponServerRpc()
+    {
+        ChoseWeaponClientRpc();
+    }
+
+    [ClientRpc]
+    public void ChoseWeaponClientRpc()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            chosenWeapon.Value = 0;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            chosenWeapon.Value = 1;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            chosenWeapon.Value = 2;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            chosenWeapon.Value = 3;
         }
     }
 
@@ -100,21 +146,26 @@ public class PlayerController : NetworkBehaviour
     {
         currentHealth.Value -= dmgOfWeapons;
         healthBar.SetHealth(currentHealth.Value);
+        if (currentHealth.Value <= 0)
+        {
+            GameController.ins.EndGame();
+            Destroy(gameObject);
+        }
     }
 
     [ServerRpc]
     public void AttackServerRpc()
     {
-        GameObject w = Instantiate(weapon, transform.position, Quaternion.identity);
-        Physics2D.IgnoreCollision(w.GetComponent<Collider2D>(), GetComponent<Collider2D>(), true);
-        ThrowWeapons(w);
-        w.GetComponent<NetworkObject>().Spawn();
         AttackClientRpc();
     }
 
     [ClientRpc]
     public void AttackClientRpc()
     {
+        GameObject w = Instantiate(weapons[chosenWeapon.Value], transform.position, Quaternion.identity);
+        Physics2D.IgnoreCollision(w.GetComponent<Collider2D>(), GetComponent<Collider2D>(), true);
+        ThrowWeapons(w);
+        // w.GetComponent<NetworkObject>().Spawn();
     }
 
     private void ThrowWeapons(GameObject weapon)

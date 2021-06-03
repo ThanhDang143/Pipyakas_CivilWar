@@ -61,7 +61,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7793103, y: 1}
+    m_SensorSize: {x: 1.7774566, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -497,8 +497,8 @@ GameObject:
   - component: {fileID: 5988811525443448332}
   - component: {fileID: 5988811525443448335}
   - component: {fileID: -2130300111414371485}
-  - component: {fileID: -3262973626885273716}
   - component: {fileID: 4537470998870967642}
+  - component: {fileID: -3262973626885273716}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -663,8 +663,10 @@ MonoBehaviour:
     m_InternalValue: 0
   currentHealth:
     m_InternalValue: 0
-  moveSpeed: 150
   healthBar: {fileID: 4109886069961128168}
+  moveSpeed: 1500
+  isStun: 0
+  stunTime: 0
   vCam: {fileID: 717957584}
   idle:
   - {fileID: 7400000, guid: 35a9088c24d801b4ab05c79fb1095330, type: 2}
@@ -690,11 +692,17 @@ MonoBehaviour:
   - {fileID: -8379200355254492496, guid: 60ee621a26cedec499309a2912d135a6, type: 3}
   - {fileID: 5867991751792228967, guid: 60ee621a26cedec499309a2912d135a6, type: 3}
   - {fileID: -5805795239751194171, guid: 60ee621a26cedec499309a2912d135a6, type: 3}
-  weapon: {fileID: 7916488479444942869, guid: bc34642b5c734bc4cb3258e58402f5cd, type: 3}
+  weapons:
+  - {fileID: 7916488479444942869, guid: bc34642b5c734bc4cb3258e58402f5cd, type: 3}
+  - {fileID: 7916488479444942869, guid: 444e872b855aa6a4e895f94ffd250699, type: 3}
+  - {fileID: 7916488479444942869, guid: 7d4753bb03f8a9b42a38837eb3da9308, type: 3}
+  - {fileID: 7916488479444942869, guid: bea3cf8cc210b2144adac42bec3309b1, type: 3}
   overlapRadius: 0.55
   overlapMask:
     serializedVersion: 2
     m_Bits: 256
+  chosenWeapon:
+    m_InternalValue: 0
 --- !u!95 &5988811525443448335
 Animator:
   serializedVersion: 3
@@ -762,6 +770,21 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4537470998870967642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5988811525443448369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8d0727d5ae3244e3b569694d3912374, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SendRate: 0.1
+  m_Animator: {fileID: 5988811525443448335}
+  m_TrackedParamFlags: 0
 --- !u!114 &-3262973626885273716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -779,21 +802,6 @@ MonoBehaviour:
   PrefabHashGenerator: Player
   AlwaysReplicateAsRoot: 0
   DontDestroyWithOwner: 0
---- !u!114 &4537470998870967642
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5988811525443448369}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8d0727d5ae3244e3b569694d3912374, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SendRate: 0.1
-  m_Animator: {fileID: 5988811525443448335}
-  m_TrackedParamFlags: 0
 --- !u!1 &6903524809005039158
 GameObject:
   m_ObjectHideFlags: 0
